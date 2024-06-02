@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function validateForm() {
+            var pclass = document.getElementById("Pclass").value;
+            var sex = document.getElementById("Sex").value;
+            var age = document.getElementById("Age").value;
+            var sibSp = document.getElementById("SibSp").value;
+            var parch = document.getElementById("Parch").value;
+            var embarked = document.getElementById("Embarked").value;
+
+            // Validate Pclass
+            if (isNaN(pclass) || pclass < 1 || pclass > 3) {
+                alert("Please enter a number from 1 to 3 for Pclass.");
+                return false;
+            }
+
+            // Validate Sex
+            if (sex !== "male" && sex !== "female") {
+                alert("Please enter 'male' or 'female' for Sex.");
+                return false;
+            }
+
+            // Validate Age
+            if (isNaN(age)) {
+                alert("Please enter a numeric value for Age.");
+                return false;
+            }
+
+            // Validate SibSp and Parch
+            if (isNaN(sibSp) || isNaN(parch)) {
+                alert("Please enter numeric values for SibSp and Parch.");
+                return false;
+            }
+
+            // Validate Embarked
+            if (embarked !== "S" && embarked !== "C" && embarked !== "Q") {
+                alert("Please enter 'S', 'C', or 'Q' for Embarked.");
+                return false;
+            }
+
+            return true; // Form is valid
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="animate__animated animate__fadeInDown">🌊 Titanic Survival Prediction 🚢</h1>
+        <h2 class="animate__animated animate__fadeInDown">Predict your survival chance on the Titanic!</h2>
+        <form action="/predict" method="post" onsubmit="return validateForm()">
+            <label for="Pclass" class="animate__animated animate__fadeInLeft">Enter Pclass (1, 2, 3):</label>
+            <input type="text" id="Pclass" name="Pclass" required class="animate__animated animate__fadeInRight"><br>
+
+            <label for="Sex" class="animate__animated animate__fadeInLeft">Enter Sex (male, female):</label>
+            <input type="text" id="Sex" name="Sex" required class="animate__animated animate__fadeInRight"><br>
+
+            <label for="Age" class="animate__animated animate__fadeInLeft">Enter Age:</label>
+            <input type="text" id="Age" name="Age" required class="animate__animated animate__fadeInRight"><br>
+
+            <label for="SibSp" class="animate__animated animate__fadeInLeft">Enter number of siblings/spouses aboard:</label>
+            <input type="text" id="SibSp" name="SibSp" required class="animate__animated animate__fadeInRight"><br>
+
+            <label for="Parch" class="animate__animated animate__fadeInLeft">Enter number of parents/children aboard:</label>
+            <input type="text" id="Parch" name="Parch" required class="animate__animated animate__fadeInRight"><br>
+
+            <label for="Embarked" class="animate__animated animate__fadeInLeft">Enter Embarked (S, C, Q):</label>
+            <input type="text" id="Embarked" name="Embarked" required class="animate__animated animate__fadeInRight"><br>
+
+            <button type="submit" class="animate__animated animate__pulse animate__infinite">Predict 🔮</button>
+        </form>
+    </div>
+</body>
+</html>

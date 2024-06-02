@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="animate__animated animate__fadeInDown">🔍 Prediction Result 📊</h1>
+        <h2 class="animate__animated animate__fadeInDown">Your survival prediction on the Titanic</h2>
+        <p class="animate__animated animate__fadeInUp">The predicted survival status is: <strong>{{ result }}</strong> with a probability of: <strong>{{ probability }}%</strong>
+        {% if result == "Survived" %}
+            😀
+        {% else %}
+            😢
+        {% endif %}
+        </p>
+    </div>
+</body>
+</html>
